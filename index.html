@@ -17,7 +17,7 @@
 		{
 			if(init === undefined)
 			{
-				document.getElementById("ipv6").textContent("Your IPs are currently being redetermined.");
+				document.getElementById("ipv6").textContent = "Your IPs are currently being redetermined.";
 			}
 			NexIP.redetermineIPs(function()
 			{
@@ -37,7 +37,7 @@
 				{
 					document.getElementById("ipv6").textContent = NexIP.ipv6;
 				}
-				document.getElementById("ipv6").textContent("Your IPs will be redetermined every 10 seconds.");
+				document.getElementById("status").textContent = "Your IPs will be redetermined every 10 seconds.";
 				setTimeout(determineIPs, 10000);
 			}, false);
 		}

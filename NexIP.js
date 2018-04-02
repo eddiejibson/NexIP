@@ -71,6 +71,10 @@ NexIPObject.prototype.getIPv4 = function(callback, forgetOld)
 		xhr.open("GET", "https://ip.nex.li/ipv4-director", true);
 		xhr.send(null);
 	}
+	else
+	{
+		callback(this.ipv4);
+	}
 };
 NexIPObject.prototype.getIPv6 = function(callback, forgetOld)
 {
@@ -111,6 +115,10 @@ NexIPObject.prototype.getIPv6 = function(callback, forgetOld)
 		xhr.ontimeout = xhr.onerror;
 		xhr.open("GET", "https://ip.nex.li/ip.txt", true);
 		xhr.send(null);
+	}
+	else
+	{
+		callback(this.ipv4);
 	}
 };
 window.NexIP = new NexIPObject();
