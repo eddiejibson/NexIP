@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>NexIP</title>
+	<link rel="stylesheet" href="https://netducks.space/assets/basic.css">
+</head>
+<body>
+	<h1>NexIP</h1>
+	<br>
+	<p>Your IPv4: <b id="ipv4">...</b></p>
+	<p>Your IPv6: <b id="ipv6">...</b></p>
+	<br>
+	<p id="status">IPs are currently being determined...</p>
+	<script src="https://ip.nex.li/NexIP.js"></script>
+	<script>
+		function determineIPs(init)
+		{
+			if(init === undefined)
+			{
+				document.getElementById("ipv6").textContent("Your IPs are currently being redetermined.");
+			}
+			NexIP.redetermineIPs(function()
+			{
+				if(NexIP.ipv4 === null)
+				{
+					document.getElementById("ipv4").textContent = "Not available";
+				}
+				else
+				{
+					document.getElementById("ipv4").textContent = NexIP.ipv4;
+				}
+				if(NexIP.ipv6 === null)
+				{
+					document.getElementById("ipv6").textContent = "Not available";
+				}
+				else
+				{
+					document.getElementById("ipv6").textContent = NexIP.ipv6;
+				}
+				document.getElementById("ipv6").textContent("Your IPs will be redetermined every 10 seconds.");
+				setTimeout(determineIPs, 10000);
+			}, false);
+		}
+		determineIPs(true);
+	</script>
+</body>
+</html>
